@@ -8,26 +8,28 @@ const divStyle = {
   lineHeight: '40px',
 };
 
+const divStyle1= {
+  flex: '0 1 auto',
+  width: '40px',
+  height: '40px',
+  border: '1px solid black',
+  lineHeight: '40px',
+  backgroundColor: "lightgreen",
+};
+
 class Cell extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { xo: '' };
-    this.setXo = this.setXo.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  setXo() {
-    if (this.state.xo == '') window.xo = !window.xo;
-    window.xo ? this.setState({ xo: 'X' }) : this.setState({ xo: 'O' });
-  }
-
-  shouldComponentUpdate() {
-    if (this.state.xo == '') return true;
-    return false;
+  handleClick() {
+    this.props.callback(this.props.idx);
   }
 
   render() {
     return (
-      <div style={divStyle} onClick={this.setXo}>{this.state.xo}</div>
+      <div style={this.props.line ? divStyle1 : divStyle} onClick={this.handleClick}>{this.props.xo}</div>
     )
   }
 }
