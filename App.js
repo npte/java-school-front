@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Cell from './Cell';
+import Hi from './Hi';
 
 const divStyle = {
   width: '130px',
@@ -19,7 +20,8 @@ class App extends React.Component {
       board: ['', '', '', '', '', '', '', '', ''],
       line: {},
       xo: true,
-      end: false
+      end: false,
+      newGame: true
     }
     this.setXOinBoard = this.setXOinBoard.bind(this);
   }
@@ -32,7 +34,7 @@ class App extends React.Component {
     const qwer = this;
 
     let check = (a,b,c) => {
-      const arr = p.state.board;
+      const arr = qwer.state.board;
       console.log ("<" + arr[a] + ">-<" + arr[b] + ">-<" + arr[c] + ">");
       if ( (arr[a] != '') && (arr[a] === arr[b]) && (arr[a] === arr[c]) ) {
         var obj = {};
@@ -65,9 +67,13 @@ class App extends React.Component {
     return (
       <div style={divStyle}>
       {
-        this.state.board.map((item, index) => (
-          <Cell key={index} idx={index} xo={item} line={this.state.line[index]} callback={this.setXOinBoard}/>
-        ))
+       newGame ? 
+          <Hi/>
+        :
+          this.state.board.map((item, index) => (
+            <Cell key={index} idx={index} xo={item} line={this.state.line[index]} callback={this.setXOinBoard}/>
+          ))
+        
       }
       </div>
     )
