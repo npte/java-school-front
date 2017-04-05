@@ -29,15 +29,16 @@ class App extends React.Component {
   }
 
   setXOinBoard(i) {
+    const qwer = this;
 
-    let check = function(p,a,b,c) {
+    let check = (a,b,c) => {
       const arr = p.state.board;
       console.log ("<" + arr[a] + ">-<" + arr[b] + ">-<" + arr[c] + ">");
       if ( (arr[a] != '') && (arr[a] === arr[b]) && (arr[a] === arr[c]) ) {
         var obj = {};
         obj[a]=true; obj[b]=true; obj[c]=true;
-        p.setState( { line: obj} );
-        p.setState( { end: true} );
+        qwer.setState( { line: obj} );
+        qwer.setState( { end: true} );
         console.log("<" + a + ":" + arr[a] + ">-<" + b + ":" + arr[b] + ">-<" + c + ":" + arr[c] + ">!!!!!");
       }
     };
@@ -50,13 +51,13 @@ class App extends React.Component {
     }
     console.log("------ begin check ------")
     for (let i=0; i<3; i++) {
-      check(this,i,i+3,i+6);
+      check(i,i+3,i+6);
     }
     for (let i=0; i<3; i++) {
-      check(this,3*i,3*i+1,3*i+2);
+      check(3*i,3*i+1,3*i+2);
     }
-    check(this,0,4,8);
-    check(this,2,4,6);
+    check(0,4,8);
+    check(2,4,6);
     console.log("------ end check ------")
   }
 
