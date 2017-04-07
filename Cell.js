@@ -6,8 +6,8 @@ import Zero from './Zero';
 
 const divStyle = {
   flex: '0 1 auto',
-  width: '30%',
-  height: '30%',
+  width: '23%',
+  height: '23%',
   border: '1px solid black',
   display: 'flex',
   alignItems: 'center',
@@ -16,8 +16,8 @@ const divStyle = {
 
 const divStyle1 = {
   flex: '0 1 auto',
-  width: '30%',
-  height: '30%',
+  width: '23%',
+  height: '23%',
   border: '1px solid black',
   backgroundColor: "#7ecf01",
   display: 'flex',
@@ -42,9 +42,7 @@ class Cell extends React.Component {
     return (
       <div style={this.props.line ? divStyle1 : divStyle} onClick={this.handleClick}>
         { 
-          this.props.xo === 'X' ? 
-            <X scale={this.state.scale} /> 
-            : this.props.xo === 'O' && <Zero scale={this.state.scale} />
+          this.props.xo
         }
       </div>
     )

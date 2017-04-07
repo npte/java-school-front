@@ -18,7 +18,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      board: ['', '', '', '', '', '', '', '', ''],
+      board: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', ''],
       line: {},
       xo: true,
       end: false,
@@ -32,37 +32,27 @@ class App extends React.Component {
   }
 
   setXOinBoard(i) {
-    console.log("i =",i," end ",this.state.end)
-    const qwer = this;
-
-    let check = (a,b,c) => {
-      const arr = qwer.state.board;
-      console.log ("<" + arr[a] + ">-<" + arr[b] + ">-<" + arr[c] + ">");
-      if ( (arr[a] != '') && (arr[a] === arr[b]) && (arr[a] === arr[c]) ) {
-        var obj = {};
-        obj[a]=true; obj[b]=true; obj[c]=true;
-        qwer.setState( { line: obj} );
-        qwer.setState( { end: true} );
-        console.log("<" + a + ":" + arr[a] + ">-<" + b + ":" + arr[b] + ">-<" + c + ":" + arr[c] + ">!!!!!");
-      }
-    };
-
     let arr = this.state.board;
-    if (arr[i] == '') {
-      this.state.xo ? arr[i]='X' : arr[i]='O';
-      this.setState( { board: arr} );
-      this.setState( { xo: !this.state.xo } );
+    if ( (i - 4 > 0) && (arr[i-4] === '') ) {
+      let temp = arr[i]; arr[i] = arr[i-4]; arr[i-4]=temp;
+      this.setState({ board: arr});
+      return;
+    } 
+    if ( (i - 1 > 0) && (arr[i-1] === '') ) {
+      let temp = arr[i]; arr[i] = arr[i-1]; arr[i-1]=temp;
+      this.setState({ board: arr});
+      return;
     }
-    console.log("------ begin check ------")
-    for (let i=0; i<3; i++) {
-      check(i,i+3,i+6);
+    if ( (i + 4 < 16) && (arr[i+4] === '') ) {
+      let temp = arr[i]; arr[i] = arr[i+4]; arr[i+4]=temp;
+      this.setState({ board: arr});
+      return;
+    } 
+    if ( (i + 1 < 16) && (arr[i+1] === '') ) {
+      let temp = arr[i]; arr[i] = arr[i+1]; arr[i+1]=temp;
+      this.setState({ board: arr});
+      return;
     }
-    for (let i=0; i<3; i++) {
-      check(3*i,3*i+1,3*i+2);
-    }
-    check(0,4,8);
-    check(2,4,6);
-    console.log("------ end check ------")
   }
 
   render() {
