@@ -1,16 +1,17 @@
 import React from 'react';
 
 import Cell from './Cell';
-import Hi from './Hi';
+//import Hi from './Hi';
 
 const divStyle = {
-  width: '130px',
-  height: '130px',
+  width: '80vh',
+  height: '80vh',
   display: 'flex',
   flexFlow: 'row wrap',
   justifyContent: 'space-between',
   alignContent: 'space-between',
-  textAlign: 'center',
+  align: 'center',
+  backgroundColor: '#d3e6d5'
 };
 
 class App extends React.Component {
@@ -21,8 +22,8 @@ class App extends React.Component {
       line: {},
       xo: true,
       end: false,
-      newGame: true
-    }
+      newGame: false
+    };
     this.setXOinBoard = this.setXOinBoard.bind(this);
   }
 
@@ -31,6 +32,7 @@ class App extends React.Component {
   }
 
   setXOinBoard(i) {
+    console.log("i =",i," end ",this.state.end)
     const qwer = this;
 
     let check = (a,b,c) => {
@@ -67,7 +69,7 @@ class App extends React.Component {
     return (
       <div style={divStyle}>
       {
-       newGame ? 
+       this.state.newGame ? 
           <Hi/>
         :
           this.state.board.map((item, index) => (
