@@ -1,12 +1,22 @@
 import React from 'react';
 
+const divStyle = {
+    height: "100%",
+    width: "100%",
+    position: "relative",
+    transform: "rotate(45deg)"
+}
+
 const X = (props) => (
-    <div>
-        <svg width={40} height={40} viewBox={"0 0 40 40"}>
-            <polyline
-                points={"0,10,10,20,0,30,10,40,20,30,30,40,40,30,30,20,40,10,30,0,20,10,10,0,0,10"}
-                fill={"rgb(9, 34, 1)"}/>
-        </svg>
+    <div style={divStyle}>
+      <div style={{top: "0", left: "0", height: "100%", width: "100%", position: "absolute",}}>
+          <div style={{height: "40%", width: "100%"}}/>
+          <div style={{height: "20%", width: "100%", background: "#566f0c"}}/>
+      </div>
+      <div style={{top: "0", left: "0", height: "100%", width: "100%", position: "absolute"}}>
+          <div style={{height: "100%", width: "40%", float: "left"}}/>
+          <div style={{height: "100%", width: "20%", float: "left", background: "#566f0c"}}/>
+      </div>
     </div>
 );
 
