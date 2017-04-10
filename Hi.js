@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './Button.css'
 import X from './X';
 import Zero from './Zero';
 
@@ -38,7 +38,7 @@ const Hi = (props) => (
       alignItems: 'center',
       align: 'center'
     }}>
-      <div><a onClick={props.callback}>Начать игру</a></div>
+      <div><a className='button' onClick={props.callback}>Начать игру</a></div>
     </div>
   </div>
 );
