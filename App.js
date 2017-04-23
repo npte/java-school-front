@@ -2,6 +2,7 @@ import React from 'react';
 import './Button.css'
 import Cell from './Cell';
 import Hi from './Hi';
+import { connect } from 'react-redux';
 
 const divStyle = {
   width: '80vh',
@@ -15,10 +16,9 @@ const divStyle = {
 };
 
 class App extends React.Component {
-  constructor(props) {
+   /*constructor(props) {
     super(props);
     this.state = {
-      board: ['', '', '', '', '', '', '', '', ''],
       line: {},
       xo: true,
       end: false,
@@ -123,7 +123,27 @@ class App extends React.Component {
       </div>
       )
     }
+  }*/
+
+
+  /*
+{this.props.board.map(
+                  (item, index) => (
+                    <Cell key={index} idx={index}/>
+                  )
+              )}
+   */
+
+  render() {
+    console.log(this.props)
+    return (
+        <div style={divStyle}>
+              aaa
+        </div>
+      )
   }
 }
 
-export default App;
+export default connect(
+  store => ({board : store.board})
+) (App);
